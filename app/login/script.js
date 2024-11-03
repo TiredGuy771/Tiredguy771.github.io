@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Simulated user database
     const users = [
-        { username: 'user1', passwordHash: '$2a$10$XQq1VZfOeiLxpKj7CbQmDuPvmTUGZMVCOGZALT4wWvC6jDNdqzMXu', role: 'user' },
+        { username: 'user1', password: 'user1password', role: 'user' },
         { username: 'user2', passwordHash: '$2a$10$XQq1VZfOeiLxpKj7CbQmDuPvmTUGZMVCOGZALT4wWvC6jDNdqzMXu', role: 'user' },
         { username: 'admin', passwordHash: '$2a$10$XQq1VZfOeiLxpKj7CbQmDuPvmTUGZMVCOGZALT4wWvC6jDNdqzMXu', role: 'admin' }
     ];
