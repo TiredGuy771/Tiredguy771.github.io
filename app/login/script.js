@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const users = [
         { username: 'user1', passwordHash: '$2a$10$XQq1VZfOeiLxpKj7CbQmDuPvmTUGZMVCOGZALT4wWvC6jDNdqzMXu', role: 'user' },
         { username: 'user2', passwordHash: '$2a$10$XQq1VZfOeiLxpKj7CbQmDuPvmTUGZMVCOGZALT4wWvC6jDNdqzMXu', role: 'user' },
-        { username: 'admin', passwordHash: '$2a$10$XQq1VZfOeiLxpKj7CbQmDuPvmTUGZMVCOGZALT4wWvC6jDNdqzMXu', role: 'admin' }
+        { username: 'admin', passwordHash: '$2a$10$oZ7v0gTuv1XuR5Y7vwPq9OGUi/vjxTOOKe2iOELGJVido5yJPLV7G', role: 'admin' }
     ];
 
     loginForm.addEventListener('submit', async (e) => {
