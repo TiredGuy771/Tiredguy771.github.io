@@ -12,10 +12,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
 
       if (isPasswordValid) {
-        let redirectUrl = '/dashboard'; // Default redirect for users
+        let redirectUrl = 'https://tiredguy771.github.io/dashboard/index.html'; // Default redirect for users
 
         if (user.role === 'admin') {
-          redirectUrl = '/admin-dashboard';
+          redirectUrl = 'https://tiredguy771.github.io/admin-dashboard/index.html';
         }
 
         // Don't send the password hash back to the client
