@@ -32,9 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // In a real application, you would never do this client-side!
             // This is just for demonstration purposes.
             if (password === 'password') { // All users have the same password for this demo
-                let redirectUrl = '/dashboard.html';
+                let redirectUrl = 'https://tiredguy771.github.io/dashboard/';
                 if (user.role === 'admin') {
-                    redirectUrl = '/admin-dashboard.html';
+                    redirectUrl = 'https://tiredguy771.github.io/admin-dashboard/';
                 }
                 window.location.href = redirectUrl;
             } else {
