@@ -1,0 +1,55 @@
+.flex {  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+  height: 100vh;  
+}  
+  
+.card {  
+  width: 350px;  
+  padding: 20px;  
+  border: 1px solid #ddd;  
+  border-radius: 10px;  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+}  
+  
+.card-header {  
+  padding: 10px;  
+  border-bottom: 1px solid #ddd;  
+}  
+  
+.card-title {  
+  font-size: 18px;  
+  font-weight: bold;  
+  margin-bottom: 10px;  
+}  
+  
+.card-description {  
+  font-size: 14px;  
+  color: #666;  
+}  
+  
+.card-content {  
+  padding: 20px;  
+}  
+  
+.card-footer {  
+  padding: 10px;  
+  border-top: 1px solid #ddd;  
+}  
+  
+.button {  
+  width: 100%;  
+  padding: 10px;  
+  font-size: 16px;  
+  font-weight: bold;  
+  color: #fff;  
+  background-color: #4CAF50;  
+  border: none;  
+  border-radius: 5px;  
+  cursor: pointer;  
+}  
+  
+.button:hover {  
+  background-color: #3e8e41;  
+}
