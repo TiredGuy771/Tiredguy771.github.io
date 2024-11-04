@@ -1,71 +1,79 @@
-document.addEventListener('DOMContentLoaded', () => {  
-   const loginForm = document.getElementById('loginForm');  
-   const messageDiv = document.getElementById('message');  
+'use client'  
   
-   loginForm.addEventListener('submit', (e) => {  
-      e.preventDefault();  
+import { useState, useEffect } from 'react'  
+import { Button } from "@/components/ui/button"  
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"  
+import { AlertCircle } from 'lucide-react'  
   
-      const username = document.getElementById('username').value;  
-      const password = document.getElementById('password').value;  
+// List of allowed IP addresses  
+const ALLOWED_IPS = ['65.181.22.132', '456.456.456.456'] // Replace with your allowed IPs  
   
-      // Simulated login logic (replace with actual authentication in a real application)  
-      const loginResult = simulateLogin(username, password);  
+export default function IPRestrictedPage() {  
+  const [isAllowed, setIsAllowed] = useState<boolean | null>(null)  
+  const [isLoading, setIsLoading] = useState(true)  
+  const [userIp, setUserIp] = useState('')  
   
-      if (loginResult.success) {  
-        showMessage('Login successful! Redirecting...', 'success');  
-        setTimeout(() => {  
-           redirectBasedOnRole(loginResult.role);  
-        }, 1500);  
-      } else {  
-        showMessage('Login failed. Please check your credentials and try again.', 'error');  
-      }  
-   });  
+  useEffect(() => {  
+   const checkIpAccess = async () => {  
+    try {  
+      const response = await fetch('https://api.ipify.org?format=json')  
+      const data = await response.json()  
+      setUserIp(data.ip)  
+      setIsAllowed(ALLOWED_IPS.includes(data.ip))  
+    } catch (error) {  
+      console.error('Error checking IP access:', error)  
+      setIsAllowed(false)  
+    } finally {  
+      setIsLoading(false)  
+    }  
+   }  
   
-   function simulateLogin(username, password) {  
-      // This is a simple simulation. In a real application, you would validate against a backend.  
-      const users = {  
-        //Bailey  
-        admin: { username: 'admin', password: 'admin123', role: 'Admin' },  
-        //Alex  
-        ElevatedUser: { username: 'EU17031', password: '897847', role: 'ElevatedUser' },  
-        //Will  
-        User: { username: 'employee', password: 'employee123', role: 'User' }  
-        //Test  
-        Trial: {username: 'T27264', password: '35391', role: 'Trial' }  
-      };  
+   checkIpAccess()  
+  }, [])  
   
-      for (const user of Object.values(users)) {  
-        if (user.username === username && user.password === password) {  
-           return { success: true, role: user.role };  
-        }  
-      }  
+  if (isLoading) {  
+   return (  
+    <div className="flex justify-center items-center h-screen">  
+      <Card className="w-[350px]">  
+       <CardHeader>  
+        <CardTitle>Loading</CardTitle>  
+        <CardDescription>Please wait while we verify your access...</CardDescription>  
+       </CardHeader>  
+      </Card>  
+    </div>  
+   )  
+  }  
   
-      return { success: false };  
-   }  
+  if (!isAllowed) {  
+   return (  
+    <div className="flex justify-center items-center h-screen">  
+      <Card className="w-[350px]">  
+       <CardHeader>  
+        <CardTitle className="flex items-center gap-2 text-destructive">  
+          <AlertCircle className="h-5 w-5" />  
+          Access Denied  
+        </CardTitle>  
+        <CardDescription>Your IP address ({userIp}) is not authorized to access this page.</CardDescription>  
+       </CardHeader>  
+      </Card>  
+    </div>  
+   )  
+  }  
   
-   function showMessage(message, type) {  
-      messageDiv.textContent = message;  
-      messageDiv.className = `message ${type}`;  
-   }  
-  
-   function redirectBasedOnRole(role) {  
-      // In a real application, you would redirect to different URLs  
-      switch (role) {  
-        case 'Admin':  
-           alert('Redirecting to Admin Dashboard');  
-            window.location.href = 'https://tiredguy771.github.io/admin-dashboard';  
-           break;  
-        case 'ElevatedUser':  
-           alert('Redirecting to Elevated Dashboard');  
-           window.location.href = 'https://tiredguy771.github.io/elevated-dashboard';  
-           break;  
-        case 'User':  
-           alert('Redirecting to User Dashboard');  
-           window.location.href = 'https://tiredguy771.github.io/dashboard';  
-           break;  
-        default:  
-           alert('Unknown role. Redirecting to home page');  
-           // window.location.href = '/';  
-      }  
-   }  
-});
+  return (  
+   <div className="flex justify-center items-center h-screen">  
+    <Card className="w-[350px]">  
+      <CardHeader>  
+       <CardTitle>Welcome</CardTitle>  
+       <CardDescription>You have been granted access to the restricted content.</CardDescription>  
+      </CardHeader>  
+      <CardContent>  
+       <p>This is the protected content of your website. Only users with allowed IP addresses can see this.</p>  
+      </CardContent>  
+      <CardFooter>  
+       <Button className="w-full">Continue to Site</Button>  
+      </CardFooter>  
+    </Card>  
+   </div>  
+  )  
+}
