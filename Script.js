@@ -13,7 +13,7 @@ import {
 import { AlertCircle } from "lucide-react"
 
 // List of allowed IP addresses
-const ALLOWED_IPS = ["103.204.117.21", "456.456.456.456"] // Replace with your allowed IPs
+const ALLOWED_IPS = ["103.204.117.21", "65.181.22.132"] // Replace with your allowed IPs
 
 export default function IPRestrictedPage() {
   const [isAllowed, setIsAllowed] = useState(null)
