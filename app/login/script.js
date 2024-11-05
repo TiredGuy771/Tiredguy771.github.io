@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // This is a simple simulation. In a real application, you would validate against a backend.
         const users = {
             //Bailey
-            admin: { username: 'admin', password: 'admin123', role: 'Admin' },
+            admin: { username: 'Admin', password: 'Admin123', role: 'Admin' },
             //Alex
             ElevatedUser: { username: 'EU17031', password: '897847', role: 'ElevatedUser' },
             //Will
