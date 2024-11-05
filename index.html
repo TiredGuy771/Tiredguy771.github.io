@@ -38,6 +38,8 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 1em;
+            text-decoration: none;
+            display: inline-block;
         }
         .button:hover {
             background-color: #0056b3;
@@ -77,7 +79,7 @@
                     <h1 class="card-title">Welcome</h1>
                     <p class="card-description">You have been granted access to the restricted content.</p>
                     <p>This is the protected content of your website. Only users with allowed IP addresses can see this.</p>
-                    <button class="button" onclick="alert('Continuing to site...')">Continue to Site</button>
+                    <a href="https://tiredguy771.github.io/login" class="button">Continue to Site</a>
                 `;
             } else {
                 content.innerHTML = `
