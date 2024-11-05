@@ -77,7 +77,14 @@
                     <h1 class="card-title">Welcome</h1>
                     <p class="card-description">You have been granted access to the restricted content.</p>
                     <p>This is the protected content of your website. Only users with allowed IP addresses can see this.</p>
-                    <button class="button" onclick="alert('Continuing to site...')">Continue to Site</button>
+                    <button class="button" onclick="redirectToHttps()">Continue to Site</button>
+
+    <script>
+    function redirectToHttps() {
+    window.location.href = 'https://tiredguy771.github.io/Welcome';
+    alert('Continuing to site...');
+    }
+    </script>
                 `;
             } else {
                 content.innerHTML = `
